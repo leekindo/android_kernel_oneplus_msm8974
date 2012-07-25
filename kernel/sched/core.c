@@ -2460,6 +2460,18 @@ unsigned long avg_nr_running(void)
 	return sum;
 }
 
+unsigned long get_avg_nr_running(unsigned int cpu)
+{
+	struct rq *q;
+
+	if (cpu >= nr_cpu_ids)
+		return 0;
+
+	q = cpu_rq(cpu);
+
+	return q->ave_nr_running;
+}
+
 #ifdef CONFIG_INTELLI_PLUG
 unsigned long avg_nr_running(void)
 {
