@@ -977,11 +977,6 @@ static inline void inc_nr_running(struct rq *rq)
 #ifdef CONFIG_MSM_RUN_QUEUE_STATS_BE_CONSERVATIVE
 	write_seqcount_end(&nr_stats->ave_seqcnt);
 #endif
-
-	if (rq->nr_running >= 2) {
-		if (!rq->rd->overload)
-			rq->rd->overload = true;
-	}
 }
 
 static inline void dec_nr_running(struct rq *rq)
