@@ -82,8 +82,8 @@ static struct cpu_hotplug {
 	.bricked_enabled = HOTPLUG_ENABLED,
 };
 
-static unsigned int NwNs_Threshold[8] = {20, 0, 45, 15, 60, 25, 0,35};
-static unsigned int TwTs_Threshold[8] = {140, 0, 190, 190, 190, 190, 0, 190};
+static unsigned int NwNs_Threshold[8] = {20, 0, 50, 15, 70, 30, 0,40};
+static unsigned int TwTs_Threshold[8] = {140, 0, 140, 190, 140, 190, 0, 190};
 
 struct down_lock {
 	unsigned int locked;
