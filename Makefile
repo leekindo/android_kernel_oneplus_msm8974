@@ -356,7 +356,7 @@ GRAPHITE	= -fgraphite-identity -floop-parallelize-all -ftree-loop-linear -floop-
 FLAGS_MODULE   = $(GRAPHITE)
 AFLAGS_MODULE   = $(GRAPHITE)
 LDFLAGS_MODULE  = $(GRAPHITE)
-CFLAGS_KERNEL	= $(GRAPHITE) -munaligned-access -fgcse-after-reload -fgcse-lm -fgcse-sm -fgcse-las -fsched-spec-load -fforce-addr -ffast-math -fsingle-precision-constant -fpredictive-commoning -mcpu=cortex-a15 -mtune=cortex-a15 -marm -mfpu=neon-vfpv4 -ftree-vectorize -mvectorize-with-neon-quad -funroll-loops -ftree-loop-vectorize -ftree-loop-im -ftree-loop-ivcanon -ftree-loop-distribute-patterns -ftree-slp-vectorize -fvect-cost-model -ftree-partial-pre -fmodulo-sched -fmodulo-sched-allow-regmoves -fivopts -floop-nest-optimize -frename-registers -std=gnu89
+CFLAGS_KERNEL	= $(GRAPHITE) -munaligned-access -fgcse-after-reload -fgcse-lm -fgcse-sm -fgcse-las -fsched-spec-load -fforce-addr -fsingle-precision-constant -fpredictive-commoning -mcpu=cortex-a15 -mtune=cortex-a15 -marm -mfpu=neon-vfpv4 -ftree-vectorize -mvectorize-with-neon-quad -funroll-loops -ftree-loop-vectorize -ftree-loop-im -ftree-loop-ivcanon -ftree-loop-distribute-patterns -ftree-slp-vectorize -fvect-cost-model -ftree-partial-pre -fmodulo-sched -fmodulo-sched-allow-regmoves -fivopts -floop-nest-optimize -frename-registers -std=gnu89
 AFLAGS_KERNEL	= $(GRAPHITE)
 CFLAGS_GCOV	= -fprofile-arcs -ftest-coverage
 
@@ -375,7 +375,7 @@ KBUILD_CFLAGS   := $(GRAPHITE) -Wall -Wundef -Wstrict-prototypes -Wno-trigraphs 
 		   -Werror-implicit-function-declaration \
 		   -Wno-format-security \
            	   -mtune=cortex-a15 \
-           	   -fmodulo-sched -fmodulo-sched-allow-regmoves -fno-tree-vectorize -ffast-math \
+           	   -fmodulo-sched -fmodulo-sched-allow-regmoves -fno-tree-vectorize \
                	   -funswitch-loops -fpredictive-commoning -fgcse-after-reload \
 		   -fno-aggressive-loop-optimizations \
 		   -fno-delete-null-pointer-checks \
