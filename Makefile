@@ -373,16 +373,17 @@ KBUILD_CPPFLAGS := -D__KERNEL__
 KBUILD_CFLAGS   := $(GRAPHITE) -Wall -Wundef -Wstrict-prototypes -Wno-trigraphs \
 		   -fno-strict-aliasing -fno-common \
 		   -Werror-implicit-function-declaration \
-		   -Wno-format-security \
            	   -mtune=cortex-a15 \
            	   -fmodulo-sched -fmodulo-sched-allow-regmoves -fno-tree-vectorize \
                	   -funswitch-loops -fpredictive-commoning -fgcse-after-reload \
 		   -fno-aggressive-loop-optimizations \
+		   -Wno-format-security -Wno-shift-overflow \
+		   -Wno-array-bounds -Wno-tautological-compare \
+		   -Wno-unused-const-variable \
 		   -fno-delete-null-pointer-checks \
 		   -Wno-bool-compare \
 		   -Wno-logical-not-parentheses \
 		   -Wno-discarded-array-qualifiers \
-		   -Wno-unused-const-variable \
 		   -Wno-misleading-indentation \
 		   -Wno-int-conversion \
 		   -Wno-unused-function \
