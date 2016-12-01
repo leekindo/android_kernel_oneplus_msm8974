@@ -11,7 +11,7 @@ cd `dirname "$0"`
 
 # Resources
 THREAD="-j$(grep -c ^processor /proc/cpuinfo)"
-DEFCONFIG="cyanogenmod_bacon_defconfig"
+DEFCONFIG="bacon_defconfig"
 CMDLINE_EXT="androidboot.selinux=permissive"
 CMDLINE_BASE="androidboot.hardware=bacon androidboot.bootdevice=msm_sdcc.1 ehci-hcd.park=3"
 CMDLINE="$CMDLINE_BASE $CMDLINE_EXT"
@@ -43,27 +43,9 @@ function make_kernel {
 	cp -vr $ZIMAGE_DIR/zImage $REPACK_DIR/out
 }
 
-function patch_ramdisk {
-	cd $REPACK_DIR/out
-	mkdir ramdisk
-	cd ramdisk
-
-	gzip -d -c $KERNEL_DIR/build_tools/ramdisk.cpio.gz | cpio -i
-
-	for PATCHFILE in $KERNEL_DIR/build_tools/patches/*.patch
-	do
-		patch -s -p1 < $PATCHFILE
-	done
-
-	find . | cpio -o -R 0:0 -H newc | gzip > ../newramdisk.cpio.gz
-}
 
 function make_dtb {
-	$REPACK_DIR/dtbToolCM -2 -o $REPACK_DIR/out/dtb.img -s 2048 -p $KERNEL_DIR/scripts/dtc/ $KERNEL_DIR/arch/arm/boot/
-}
-
-function make_boot_image {
-	$REPACK_DIR/mkbootimg --kernel $REPACK_DIR/out/zImage --ramdisk $REPACK_DIR/out/newramdisk.cpio.gz --cmdline "$CMDLINE" --base 0x00000000 --pagesize 2048 --ramdisk_offset 0x02000000 --tags_offset 0x01e00000 --dt $REPACK_DIR/out/dtb.img -o $REPACK_DIR/out/kernel-$(date +%Y%m%d).img
+	$REPACK_DIR/dtbToolCM -2 -o $REPACK_DIR/out/dtb -s 2048 -p $KERNEL_DIR/scripts/dtc/ $KERNEL_DIR/arch/arm/boot/
 }
 
 DATE_START=$(date +"%s")
@@ -100,8 +82,6 @@ case "$dchoice" in
 	y|Y)
 		make_kernel
 		make_dtb
-#		patch_ramdisk
-#		make_boot_image
 		break
 		;;
 	n|N )
