@@ -19,7 +19,7 @@
 #include "msm_camera_dt_util.h"
 
 /* longxiaowu@camera 20150908 add start for product information */
-#ifdef VENDOR_EDIT
+#ifdef CONFIG_MACH_MSM8974_14001
 #include <linux/project_info.h>
 struct camera_vendor_match_tbl {
     char sensor_name[32];
@@ -32,7 +32,7 @@ static struct camera_vendor_match_tbl match_tbl[] = {
     {"imx214","Sony"},
     {"s5k3l8","Samsung"},
 };
-#endif /* VENDOR_EDIT */
+#endif /* CONFIG_MACH_MSM8974_14001 */
  /* longxiaowu@camera 20150908 add end for product information */
 
 /* Logging macro */
@@ -621,7 +621,7 @@ int32_t msm_sensor_driver_probe(void *setting,
 	struct msm_camera_sensor_slave_info *slave_info = NULL;
 	struct msm_camera_slave_info        *camera_info = NULL;
 /* longxiaowu@camera 20150908 add start for product information */
-#ifdef VENDOR_EDIT
+#ifdef CONFIG_MACH_MSM8974_14001
 	uint32_t count = 0,i;
 	enum COMPONENT_TYPE CameraID;
 #endif
@@ -871,7 +871,7 @@ int32_t msm_sensor_driver_probe(void *setting,
 	/*Save sensor info*/
 	s_ctrl->sensordata->cam_slave_info = slave_info;
 /* longxiaowu@camera 20150908 add start for product information */
-#ifdef VENDOR_EDIT
+#ifdef CONFIG_MACH_MSM8974_14001
     if (0 == slave_info->camera_id)
         CameraID = R_CAMERA;
     else
@@ -887,7 +887,7 @@ int32_t msm_sensor_driver_probe(void *setting,
     else
         push_component_info(CameraID,slave_info->sensor_name,
             match_tbl[i].vendor_name);
-#endif /* VENDOR_EDIT */
+#endif /* CONFIG_MACH_MSM8974_14001 */
  /* longxiaowu@camera 20150908 add end for product information */
 	msm_sensor_fill_sensor_info(s_ctrl, probed_info, entity_name);
 
