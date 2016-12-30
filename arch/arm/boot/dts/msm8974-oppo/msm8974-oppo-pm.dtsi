@@ -73,7 +73,3 @@
 		qcom,qpnp-rtc-alarm-pwrup = <1>;
 	};
 };
-
-&pm8941_chg_boost {
-	status = "ok";
-};
