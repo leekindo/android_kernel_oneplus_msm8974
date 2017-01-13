@@ -17,7 +17,7 @@ CMDLINE_BASE="androidboot.hardware=bacon androidboot.bootdevice=msm_sdcc.1 ehci-
 CMDLINE="$CMDLINE_BASE $CMDLINE_EXT"
 
 # Vars
-export CROSS_COMPILE="ccache ${HOME}/tools/arm-linux-gnueabihf-4.9/bin/arm-linux-gnueabihf-"
+export CROSS_COMPILE="ccache ${HOME}/tools/arm-linux-gnueabihf-6.2/bin/arm-linux-gnueabihf-"
 export ARCH=arm
 export SUBARCH=arm
 export KBUILD_BUILD_USER=ab123321
