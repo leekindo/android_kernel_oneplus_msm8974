@@ -46,6 +46,13 @@
 		compatible = "qcom,actuator";
 		qcom,cci-master = <0>;
 	};
+		  
+	actuator1: qcom,actuator@36 {		
+		cell-index = <1>;		
+		reg = <0x36>;		
+		compatible = "qcom,actuator";		
+		qcom,cci-master = <0>;		
+	};		
 
 	eeprom1: qcom,eeprom@20 {
 		cell-index = <0>;
