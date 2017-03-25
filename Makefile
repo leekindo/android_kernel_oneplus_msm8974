@@ -245,8 +245,9 @@ CONFIG_SHELL := $(shell if [ -x "$$BASH" ]; then echo $$BASH; \
 
 HOSTCC       = gcc
 HOSTCXX      = g++
-HOSTCFLAGS = -Wall -Wmissing-prototypes -Wstrict-prototypes -Ofast -fno-tree-vectorize -fomit-frame-pointer -pipe -DNDEBUG -fgcse-las
-HOSTCXXFLAGS = -pipe -DNDEBUG -Ofast -fno-tree-vectorize -fgcse-las
+
+HOSTCFLAGS = -Wall -Wmissing-prototypes -Wstrict-prototypes -Ofast -fno-tree-vectorize -fgraphite -fomit-frame-pointer -pipe -DNDEBUG -fgcse-las -floop-flatten -floop-parallelize-all -ftree-loop-linear -floop-interchange -floop-strip-mine -floop-block -Wno-unused-parameter -Wno-sign-compare -Wno-missing-field-initializers -Wno-unused-variable -Wno-unused-value
+HOSTCXXFLAGS = -pipe -DNDEBUG -Ofast -fno-tree-vectorize -fgcse-las -fgraphite -floop-flatten -floop-parallelize-all -ftree-loop-linear -floop-interchange -floop-strip-mine -floop-block -pipe
 
 # Decide whether to build built-in, modular, or both.
 # Normally, just do built-in.
@@ -330,7 +331,7 @@ include $(srctree)/scripts/Kbuild.include
 
 AS		= $(CROSS_COMPILE)as
 LD		= $(CROSS_COMPILE)ld
-REAL_CC		= $(CROSS_COMPILE)gcc
+REAL_CC		= ccache $(CROSS_COMPILE)gcc
 CPP		= $(CC) -E
 AR		= $(CROSS_COMPILE)ar
 NM		= $(CROSS_COMPILE)nm
