@@ -21,7 +21,7 @@ extern int ac_level;
 
 extern int usb_level;
 
-#define USB_CHARGE_LEVEL_DEFAULT 500
+#define USB_CHARGE_LEVEL_DEFAULT 1400
 
 #define USB_CHARGE_LEVEL_MIN 0
 #define USB_CHARGE_LEVEL_MAX 1600
