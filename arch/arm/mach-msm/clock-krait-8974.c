@@ -592,7 +592,7 @@ module_param(pvs_config_ver, uint, S_IRUGO);
 
 #ifdef CONFIG_MACH_MSM8974_14001
 #define UNDERCLOCKED_MAXFREQ_HZ	1958400000
-static bool no_cpu_underclock;
+static bool no_cpu_underclock = true;
 
 static int __init get_cpu_underclock(char *unused)
 {
